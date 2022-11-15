@@ -1,0 +1,10 @@
+2022-11-11 17:30:19 LogWrapper init() ./logs/main.log
+2022-11-11 17:30:19 Bot started with Trade Settings:
+{'n_ma': 12, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0006, 'riskreward': 1.5, 'strategy': 'M', 'dim_lot': [1, 1.4, 1, 1.4, 1.9, 2.5, 3.3, 4.4], 'max_open_trades': 8, 'sl': 0.008, 'tp': 0.006, 'delta_sl_tp': 0.002}
+{'n_ma': 12, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0006, 'riskreward': 1.5, 'strategy': 'B', 'dim_lot': [1], 'max_open_trades': 1, 'sl': 0, 'tp': 0, 'delta_sl_tp': 0}
+{'n_ma': 12, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0006, 'riskreward': 1.5, 'strategy': 'M', 'dim_lot': [1, 1.4, 1, 1.4, 1.9, 2.5, 3.3, 4.4], 'max_open_trades': 8, 'sl': 0.008, 'tp': 0.006, 'delta_sl_tp': 0.002}
+{'n_ma': 12, 'n_std': 2.5, 'maxspread': 0.04, 'mingain': 0.06, 'riskreward': 1.5, 'strategy': 'M', 'dim_lot': [1, 1.4, 1, 1.4, 1.9, 2.5, 3.3, 4.4], 'max_open_trades': 8, 'sl': 0.008, 'tp': 0.006, 'delta_sl_tp': 0.002}
+{'n_ma': 12, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0006, 'riskreward': 1.5, 'strategy': 'B', 'dim_lot': [1], 'max_open_trades': 1, 'sl': 0, 'tp': 0, 'delta_sl_tp': 0}
+{'n_ma': 12, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0006, 'riskreward': 1.5, 'strategy': 'B', 'dim_lot': [1], 'max_open_trades': 1, 'sl': 0, 'tp': 0, 'delta_sl_tp': 0}
+ 
+2022-11-11 17:30:20 Bot started
