@@ -27,7 +27,7 @@ class Bot:
         self.log_to_main("Bot started")
         self.log_to_error("Bot started")
         self.strategy_states=dict({k: StrategyStates(v, k, self.api) for k,v in self.pairs.items() })
-        print(f"Strategy_states :{self.strategy_states}")
+        print(f"\nStrategy_states :{self.strategy_states}")
 
     def load_settings(self):
         # upload settings.json info into data ; trade_settings is set
@@ -36,7 +36,7 @@ class Bot:
             self.pairs=data['pairs']
             self.trade_settings = { k: TradeSettings(v, k) for k, v in self.pairs.items() }
             self.trade_risk = data['trade_risk']  # this number is set equal to 10 in settings.json
-            print(f"trade settings: {self.trade_settings}")
+            print(f"\nTrade settings: {self.trade_settings}")
 
 
 
@@ -71,10 +71,8 @@ class Bot:
                 # this should be further checked, in case there are partial closing
                 ot=trade_is_open(p, self.api)
                 if ot==0:
-                    self.strategy_states[p].price_trades=[]
-                    self.strategy_states[p].unit_trades = []
-                    self.strategy_states[p].current_n_ot = 0
-                    self.strategy_states[p].signals = []
+                    self.strategy_states[p].reset()
+
                 last_time = self.candle_manager.timings[p].last_time
                 # in technical manager there is the function get_trade_decision:
                 trade_decision = get_trade_decision(last_time, p, Bot.GRANULARITY, self.api, 

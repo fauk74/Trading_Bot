@@ -12,7 +12,7 @@ class TradeSettings:
         self.sl=ob['sl']
         self.tp=ob['tp']
         self.delta_sl_tp=self.sl-self.tp
-       
+        self.size=ob['size']
     def __repr__(self):
         return str(vars(self))
 

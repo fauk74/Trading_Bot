@@ -14,7 +14,23 @@ class StrategyStates:
             a=len(ot)
         self.current_n_ot=a
         self.signals=[]
+        self.sl=0
+        self.tp=0
 
+
+    def update(self, price, signal, units):
+        self.price_trades.append(price)
+        self.unit_trades.append(units)
+        self.current_n_ot += 1
+        self.signals.append(signal)
+
+    def reset(self):
+        self.price_trades = []
+        self.unit_trades = []
+        self.current_n_ot = 0
+        self.signals = []
+        self.sl = 0
+        self.tp = 0
 
     def __repr__(self):
         return str(vars(self))
