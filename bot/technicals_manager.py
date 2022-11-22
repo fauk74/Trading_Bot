@@ -16,7 +16,7 @@ ADDROWS = 20
 
 def apply_signal(row, trade_settings: TradeSettings,  strategy_states):
     # for the first purchase the approach is the usual: trigger Bollinger
-    print(strategy_states)
+
     if strategy_states.current_n_ot == 0:
         if row.SPREAD <= trade_settings.maxspread and row.GAIN >= trade_settings.mingain:
             if row.mid_c > row.BB_UP and row.mid_o < row.BB_UP:
