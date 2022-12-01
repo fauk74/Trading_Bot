@@ -1,3 +1,2 @@
-2022-11-21 05:15:24 LogWrapper init() ./logs/error.log
-2022-11-21 05:15:25 Bot started
-2022-11-21 06:39:03 CRASH: 'TradeSettings' object has no attribute 'size'
+2022-12-01 07:33:16 LogWrapper init() ./logs/error.log
+2022-12-01 07:33:18 Bot started

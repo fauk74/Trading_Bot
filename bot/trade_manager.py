@@ -3,20 +3,23 @@ from api.oanda_api import OandaApi
 from bot.trade_risk_calculator import get_trade_units
 from models.trade_decision import TradeDecision
 from bot.strategy_calculator import strategy_units , strategy_sl_tp
+from bot.telegram import send_message
 
 def trade_is_open(pair, api: OandaApi):
 
     open_trades = api.get_open_trades()
 
-    for ot in open_trades:
-        if ot.instrument == pair:
-            return ot
+    if open_trades != None:
+        for ot in open_trades:
+            if ot.instrument == pair:
+                return ot
 
     return None
 
 
 def place_trade(trade_decision: TradeDecision, api: OandaApi, log_message, log_error, trade_risk, trade_settings, strategy_state):
 
+    send_message("Placing a trade")
     ot = trade_is_open(trade_decision.pair, api)
 
     # it is possbile that the system exit from tradings anywhen . If there are no trades open, strategy state is to be reset
@@ -42,6 +45,7 @@ def place_trade(trade_decision: TradeDecision, api: OandaApi, log_message, log_e
         )
 
     if trade_settings.strategy == 'M':
+
         trade_units = strategy_units(trade_settings, strategy_state)
         # SL and TP must be according to strategy
         SL, TP = strategy_sl_tp(trade_decision, trade_settings, strategy_state)

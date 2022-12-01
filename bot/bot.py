@@ -9,7 +9,7 @@ from models.trade_settings import TradeSettings
 from models.strategies import StrategyStates
 from api.oanda_api import OandaApi
 import constants.defs as defs
-
+from bot.telegram import send_message
 
 
 class Bot:
@@ -84,6 +84,7 @@ class Bot:
                     # place trade is in trade_manager
                     # the strategy_states have to be passed because a purchase
                     # can change them
+                    send_message(trade_decision)
                     place_trade(trade_decision, self.api, self.log_message, self.log_to_error, self.trade_risk, self.trade_settings[p], self.strategy_states[p])
                     # ----> to be developed the place trade with strategy_states
                     # in trade manager
@@ -91,10 +92,12 @@ class Bot:
     def run(self):
         while True:
             time.sleep(Bot.SLEEP)
-            try:
-                self.process_candles(self.candle_manager.update_timings())
-            except Exception as error:
-                self.log_to_error(f"CRASH: {error}")
-                break
+            self.process_candles(self.candle_manager.update_timings())
+
+  #          try:
+  #              self.process_candles(self.candle_manager.update_timings())
+  #          except Exception as error:
+  #              self.log_to_error(f"CRASH: {error}")
+  #              break
     
 
