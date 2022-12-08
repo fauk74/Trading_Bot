@@ -12,6 +12,7 @@ def trade_is_open(pair, api: OandaApi):
     if open_trades != None:
         for ot in open_trades:
             if ot.instrument == pair:
+                print(ot)
                 return ot
 
     return None
@@ -62,13 +63,19 @@ def place_trade(trade_decision: TradeDecision, api: OandaApi, log_message, log_e
         print (f"\n Trade id : {trade_id}")
         # we need , now that we placed a trade, to update the strategy_state
         strategy_state.update(trade_decision.mid_c, trade_decision.signal, trade_units )
+        log_message(
+            f"placed trade_id:{trade_id} for {trade_decision} , strategy {trade_settings.strategy}, traded units {trade_units} , strategy_state {strategy_state}",
+            trade_decision.pair)
+        send_message(f"placed trade_id:{trade_id} for {trade_decision} , strategy {trade_settings.strategy}, traded units {trade_units} , strategy_state {strategy_state}")
 
 
 
     if trade_id is None:
-        log_error(f"ERROR placing {trade_decision}")
-        log_message(f"ERROR placing {trade_decision}", trade_decision.pair)
-    else:
-        log_message(f"placed trade_id:{trade_id} for {trade_decision} , strategy {trade_settings.strategy}", trade_decision.pair)
+
+        send_message(f"ERROR placing trade_id:{trade_id} for {trade_decision} , strategy {trade_settings.strategy}, traded units {trade_units} , strategy_state {strategy_state}")
+        log_error(f"ERROR placing {trade_decision}, {trade_decision.pair} , trade_units {trade_units}")
+        log_message(f"ERROR placing {trade_decision} for trade_units {trade_units}", trade_decision.pair)
+
+
 
 

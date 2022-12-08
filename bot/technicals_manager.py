@@ -30,10 +30,10 @@ def apply_signal(row, trade_settings: TradeSettings,  strategy_states):
         if strategy_states.signals[0] == defs.BUY:
             # in case the mid_c is lower than delta_sl_tp of price of first trade
             # and there are uneven trades and the first was a BUY order
-            if row.mid_c < strategy_states['price_trades'][0]-trade_settings.delta_sl_tp:
+            if row.mid_c < strategy_states.price_trades[0]-trade_settings.delta_sl_tp:
                 return defs.SELL # we have to specify, after, units and tp/sl
         if strategy_states.signals[0]==defs.SELL:
-            if row.mid_c > strategy_states['price_trades'][0]+trade_settings.delta_sl_tp:
+            if row.mid_c > strategy_states.price_trades[0]+trade_settings.delta_sl_tp:
                 return defs.BUY # the opposite of previous one
     elif strategy_states.current_n_ot > 1 and strategy_states.current_n_ot%2==0 : # so, there is a sell/buy or a buy/sell trades, in even number
         if strategy_states.signals[0]==defs.BUY:
@@ -41,7 +41,7 @@ def apply_signal(row, trade_settings: TradeSettings,  strategy_states):
                 return defs.BUY
 
         if strategy_states.signals[0]==defs.SELL:
-            if row.mid_c < strategy_states['price_trades'][0]:
+            if row.mid_c < strategy_states.price_trades[0]:
                 return defs.SELL
 
     return defs.NONE     

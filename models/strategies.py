@@ -1,4 +1,5 @@
 from bot.trade_manager import trade_is_open
+import numpy as np
 
 class StrategyStates:
 
@@ -8,12 +9,22 @@ class StrategyStates:
         self.price_trades=[]
         self.unit_trades=[]
         ot = trade_is_open(pair, api)
+        self.signals=[]
         if ot == None:
             a=0
         else:
-            a=len(ot)
+            trades=ot['trades']
+
+            a=len(trades)
+            c=[]
+            for b in trades:
+                d=b['currentUnits']
+                c.append(d / np.abs( d) )
+            self.signals = c
+            # da scrivere una funzione che calcola BENE  len(ot)
+            # ricordarsi che per ogni open trade ci deve essere una corrispondenza in signals
         self.current_n_ot=a
-        self.signals=[]
+
         self.sl=0
         self.tp=0
 
