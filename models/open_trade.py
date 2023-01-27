@@ -9,6 +9,7 @@ class OpenTrade:
         self.currentUnits = float(api_ob['currentUnits'])
         self.unrealizedPL = float(api_ob['unrealizedPL'])
         self.marginUsed = float(api_ob['marginUsed'])
+        self.currentUnits=float(api_ob['currentUnits'])
 
     def __repr__(self):
         return str(vars(self))

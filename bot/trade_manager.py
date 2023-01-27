@@ -1,4 +1,8 @@
 
+# Trade manager is the module where , according to the strategy, the placed orders and the state of the strategy ,
+# an order is placed
+# place_trade is called
+
 from api.oanda_api import OandaApi
 from bot.trade_risk_calculator import get_trade_units
 from models.trade_decision import TradeDecision

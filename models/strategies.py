@@ -1,10 +1,12 @@
 from bot.trade_manager import trade_is_open
 import numpy as np
-
+from constants.defs import BUY, SELL, NONE
 class StrategyStates:
 
-#in the object Strategy are defined the parameters that can vary during the exectution of the bot
-# that are not fixed like TradeSettings 
+#in the object StrategyStates are defined the parameters that can vary during the exectution of the bot
+# that are not fixed like TradeSettings
+# those parameters are saved in lists. See function reset
+
     def __init__(self, ob, pair , api):
         self.price_trades=[]
         self.unit_trades=[]
@@ -13,13 +15,19 @@ class StrategyStates:
         if ot == None:
             a=0
         else:
-            trades=ot['trades']
-
-            a=len(trades)
+            #trades=ot['trades']
+            a=1
+            #a=len(trades)
             c=[]
-            for b in trades:
-                d=b['currentUnits']
-                c.append(d / np.abs( d) )
+            #for b in trades:
+            d=ot.currentUnits
+            self.price_trades.append(ot.price)
+            self.unit_trades.append(d)
+            if d < 0:
+                f=SELL
+            else:
+                f=BUY
+            c.append(f )
             self.signals = c
             # da scrivere una funzione che calcola BENE  len(ot)
             # ricordarsi che per ogni open trade ci deve essere una corrispondenza in signals
