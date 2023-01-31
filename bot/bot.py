@@ -69,6 +69,7 @@ class Bot:
                 # it is necessary to check if , in the meanwhile, the system closed automatically some trades, to
                 # reset the strategy states
                 # this should be further checked, in case there are partial closing
+
                 ot=trade_is_open(p, self.api)
                 if ot==0:
                     self.strategy_states[p].reset()
@@ -86,12 +87,26 @@ class Bot:
                     # can change them
                     send_message(trade_decision)
                     place_trade(trade_decision, self.api, self.log_message, self.log_to_error, self.trade_risk, self.trade_settings[p], self.strategy_states[p])
-                    # ----> to be developed the place trade with strategy_states
-                    # in trade manager
+
+                
+
+    # bot.process_candles -> for p in triggered -> get_trade_decision (from technicals_manager) -> place_trade
+
+    # trade_decision comes from get_trade_decision (technicals_manager) which fetch_candles and then process_candles and then return TradeDecision
+    # the class trade_decision is in models and the most important item is the signal: trade_decision.signal
+
+    # steps to implement a new strategy:
+    # add details to settings
+    # signal to trigger is in technicals_manager (through process_candles and apply_signal)
+    # get_trade_decision then passes the trade_decision
+    # the place_trade has to be implemented as well
+
+
 
     def run(self):
         while True:
             time.sleep(Bot.SLEEP)
+            #update_timings is a function of candle_manager: it returns all triggered candles
             self.process_candles(self.candle_manager.update_timings())
 
   #          try:

@@ -9,6 +9,8 @@ pd.set_option('expand_frame_repr', False)
 
 
 from api.oanda_api import OandaApi
+
+# inside trade_settings there are useful information like strategy : trade_setting.strategy
 from models.trade_settings import TradeSettings
 import constants.defs as defs
 
@@ -17,7 +19,13 @@ ADDROWS = 20
 def apply_signal(row, trade_settings: TradeSettings,  strategy_states):
     # for the first purchase the approach is the usual: trigger Bollinger
 
+
     if strategy_states.current_n_ot == 0:
+
+        if trade_settings.strategy=="MD":
+            # if there are no current open trades, with strategy "MD" we will start buying , anyhow
+            return defs.BUY
+
         if row.SPREAD <= trade_settings.maxspread and row.GAIN >= trade_settings.mingain:
             if row.mid_c > row.BB_UP and row.mid_o < row.BB_UP:
                 return defs.SELL

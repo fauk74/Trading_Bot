@@ -6,6 +6,7 @@ BUY=1
 SELL=-1
 NONE=0
 
+
 SECURE_HEADER = {
     "Authorization": f"Bearer {API_KEY}",
     "Content-Type": "application/json"

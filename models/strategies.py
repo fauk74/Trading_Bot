@@ -31,8 +31,10 @@ class StrategyStates:
             self.signals = c
             # da scrivere una funzione che calcola BENE  len(ot)
             # ricordarsi che per ogni open trade ci deve essere una corrispondenza in signals
-        self.current_n_ot=a
 
+            # se il programma si chiude e riparte ,
+        self.current_n_ot=a
+        self.open_trades=[]
         self.sl=0
         self.tp=0
 
@@ -50,7 +52,7 @@ class StrategyStates:
         self.signals = []
         self.sl = 0
         self.tp = 0
-
+        self.open_trades= []
     def __repr__(self):
         return str(vars(self))
 

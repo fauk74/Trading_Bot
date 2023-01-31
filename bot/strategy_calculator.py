@@ -8,6 +8,11 @@ def strategy_units(trade_settings, strategy_state):
     units=units*dim_lot
     return units
 
+def strategy_tp(trade_settings, strategy_state):
+    ot=strategy_state.current_n_ot
+    tp_percent = trade_settings.tp_vect[ot]
+    return tp_percent
+
 def strategy_sl_tp(trade_decision, trade_settings, strategy_state):
     price = trade_decision.mid_c
     if strategy_state.current_n_ot == 0:
