@@ -2,7 +2,7 @@ import json
 import time
 from bot.candle_manager import CandleManager
 from bot.technicals_manager import get_trade_decision
-from bot.trade_manager import place_trade, trade_is_open
+from bot.trade_manager import place_trade, trade_is_open , place_double_trade
 
 from infrastructure.log_wrapper import LogWrapper
 from models.trade_settings import TradeSettings
@@ -86,7 +86,10 @@ class Bot:
                     # the strategy_states have to be passed because a purchase
                     # can change them
                     send_message(trade_decision)
-                    place_trade(trade_decision, self.api, self.log_message, self.log_to_error, self.trade_risk, self.trade_settings[p], self.strategy_states[p])
+                    if trade_decision.signal == defs.BUY or trade_decision.signal == defs.SELL:
+                        place_trade(trade_decision, self.api, self.log_message, self.log_to_error, self.trade_risk, self.trade_settings[p], self.strategy_states[p])
+                    elif trade_decision.signal == defs.BUY2:
+                        place_double_trade(trade_decision, self.api, self.log_message, self.log_to_error, self.trade_risk, self.trade_settings[p], self.strategy_states[p])
 
                 
 

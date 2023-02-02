@@ -5,7 +5,7 @@ OANDA_URL="https://api-fxpractice.oanda.com/v3"
 BUY=1
 SELL=-1
 NONE=0
-
+BUY2=2
 
 SECURE_HEADER = {
     "Authorization": f"Bearer {API_KEY}",

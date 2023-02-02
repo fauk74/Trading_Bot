@@ -1,4 +1,4 @@
-from bot.trade_manager import trade_is_open
+from bot.trade_manager import trade_is_open, trade_are_open
 import numpy as np
 from constants.defs import BUY, SELL, NONE
 class StrategyStates:
@@ -10,34 +10,15 @@ class StrategyStates:
     def __init__(self, ob, pair , api):
         self.price_trades=[]
         self.unit_trades=[]
-        ot = trade_is_open(pair, api)
         self.signals=[]
-        if ot == None:
-            a=0
-        else:
-            #trades=ot['trades']
-            a=1
-            #a=len(trades)
-            c=[]
-            #for b in trades:
-            d=ot.currentUnits
-            self.price_trades.append(ot.price)
-            self.unit_trades.append(d)
-            if d < 0:
-                f=SELL
-            else:
-                f=BUY
-            c.append(f )
-            self.signals = c
-            # da scrivere una funzione che calcola BENE  len(ot)
-            # ricordarsi che per ogni open trade ci deve essere una corrispondenza in signals
-
-            # se il programma si chiude e riparte ,
-        self.current_n_ot=a
+        self.current_n_ot=0
         self.open_trades=[]
         self.sl=0
         self.tp=0
-
+        # through the parameters escalations we will manage the rise of the order-based strategy
+        self.escalationbuy=0
+        self.escalationsell=0
+        self.reset(pair, api)
 
     def update(self, price, signal, units):
         self.price_trades.append(price)
@@ -45,7 +26,7 @@ class StrategyStates:
         self.current_n_ot += 1
         self.signals.append(signal)
 
-    def reset(self):
+    def reset(self, pair, api):
         self.price_trades = []
         self.unit_trades = []
         self.current_n_ot = 0
@@ -53,6 +34,36 @@ class StrategyStates:
         self.sl = 0
         self.tp = 0
         self.open_trades= []
+        self.escalationbuy = 0
+        self.escalationsell = 0
+        self.check_open_trades(pair, api)
+
+    def check_status(self, pair, api):
+        # please note that this function updates the open trades but does not reset the escalationbuy/sell
+        self.price_trades = []
+        self.unit_trades = []
+        self.current_n_ot = 0
+        self.signals = []
+        self.check_open_trades(pair, api)
+
+    def check_open_trades(self, pair, api):
+        list_open_trades = trade_are_open(pair, api)
+        a = len(list_open_trades)
+        if a > 0:
+            for ot in list_open_trades:
+                # a=len(trades)
+                c = []
+                # for b in trades:
+                d = ot.currentUnits
+            self.price_trades.append(ot.price)
+            self.unit_trades.append(d)
+            if d < 0:
+                f = SELL
+            else:
+                f = BUY
+            c.append(f)
+            self.signals = c
+
     def __repr__(self):
         return str(vars(self))
 

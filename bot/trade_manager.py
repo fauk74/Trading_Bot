@@ -7,7 +7,7 @@ from api.oanda_api import OandaApi
 from bot.trade_risk_calculator import get_trade_units
 from models.trade_decision import TradeDecision
 from bot.strategy_calculator import strategy_units , strategy_sl_tp, strategy_tp
-from models.strategies import StrategyStates
+# from models.strategies import StrategyStates
 from bot.telegram import send_message
 
 def trade_is_open(pair, api: OandaApi):
@@ -23,6 +23,19 @@ def trade_is_open(pair, api: OandaApi):
 
     return None
 
+def trade_are_open(pair, api: OandaApi):
+    #differently from trade_is_open which returns the FIRST open trade, trade_are_open returns a LIST of ALL open trades
+    list_open_trades=[]
+    open_trades = api.get_open_trades()
+
+    if open_trades != None:
+        for ot in open_trades:
+            # see class Open Trade. There is also id
+            if ot.instrument == pair:
+                print(f"there is an open trade:  {ot}") # are we able to find the trade_id
+                list_open_trades.append(ot)
+
+    return list_open_trades
 
 def place_trade(trade_decision: TradeDecision, api: OandaApi, log_message, log_error, trade_risk, trade_settings, strategy_state):
 
@@ -85,7 +98,7 @@ def place_trade(trade_decision: TradeDecision, api: OandaApi, log_message, log_e
 
 
 
-def place_double_trade(trade_decision: TradeDecision, api: OandaApi, log_message, log_error, trade_risk, trade_settings, strategy_state: StrategyStates ):
+def place_double_trade(trade_decision: TradeDecision, api: OandaApi, log_message, log_error, trade_risk, trade_settings, strategy_state ):
     trade_units = strategy_units(trade_settings, strategy_state)
     tp_percent = strategy_tp(trade_settings, strategy_state)
     price = trade_decision.mid_c
@@ -142,5 +155,4 @@ def place_double_trade(trade_decision: TradeDecision, api: OandaApi, log_message
         log_error(f"ERROR placing {trade_decision}, {trade_decision.pair} , trade_units {trade_units}")
         log_message(f"ERROR placing {trade_decision} for trade_units {trade_units}", trade_decision.pair)
 
-    # Accodare i trade id nello strategy state  per verifica successiva
-    # aggiornare il log
+

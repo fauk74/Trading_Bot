@@ -1,11 +1,11 @@
-2023-01-27 05:28:11 LogWrapper init() ./logs/main.log
-2023-01-27 05:28:11 Bot started with Trade Settings:
-{'n_ma': 12, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0006, 'riskreward': 1.5, 'strategy': 'MD', 'dim_lot': [0.1, 0.4, 1.36, 4.22], 'max_open_trades': 4, 'sl': 0.008, 'tp': 0.006, 'delta_sl_tp': 0.002, 'size': 500}
-{'n_ma': 12, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0006, 'riskreward': 1.5, 'strategy': 'M', 'dim_lot': [1, 1.4, 1, 1.4, 1.9, 2.5, 3.3, 4.4], 'max_open_trades': 8, 'sl': 0.008, 'tp': 0.006, 'delta_sl_tp': 0.002, 'size': 500}
-{'n_ma': 12, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0006, 'riskreward': 1.5, 'strategy': 'M', 'dim_lot': [1, 1.4, 1, 1.4, 1.9, 2.5, 3.3, 4.4], 'max_open_trades': 8, 'sl': 0.008, 'tp': 0.006, 'delta_sl_tp': 0.002, 'size': 500}
-{'n_ma': 12, 'n_std': 2.5, 'maxspread': 0.04, 'mingain': 0.06, 'riskreward': 1.5, 'strategy': 'M', 'dim_lot': [1, 1.4, 1, 1.4, 1.9, 2.5, 3.3, 4.4], 'max_open_trades': 8, 'sl': 0.008, 'tp': 0.006, 'delta_sl_tp': 0.002, 'size': 500}
-{'n_ma': 12, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0006, 'riskreward': 1.5, 'strategy': 'M', 'dim_lot': [1, 1.4, 1, 1.4, 1.9, 2.5, 3.3, 4.4], 'max_open_trades': 8, 'sl': 0, 'tp': 0, 'delta_sl_tp': 0, 'size': 500}
-{'n_ma': 12, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0006, 'riskreward': 1.5, 'strategy': 'M', 'dim_lot': [1, 1.4, 1, 1.4, 1.9, 2.5, 3.3, 4.4], 'max_open_trades': 8, 'sl': 0.008, 'tp': 0.006, 'delta_sl_tp': 0.002, 'size': 500}
-{'n_ma': 12, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0006, 'riskreward': 1.5, 'strategy': 'B', 'dim_lot': [1], 'max_open_trades': 1, 'sl': 0, 'tp': 0, 'delta_sl_tp': 0, 'size': 500}
+2023-02-02 06:34:24 LogWrapper init() ./logs/main.log
+2023-02-02 06:34:24 Bot started with Trade Settings:
+{'n_ma': 12, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0006, 'riskreward': 1.5, 'strategy': 'MD', 'dim_lot': [0.1, 0.4, 1.36, 4.22], 'max_open_trades': 4, 'sl': 0.008, 'tp': 0.006, 'delta_sl_tp': 0.002, 'size': 500, 'pair': 'XAU_USD'}
+{'n_ma': 12, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0006, 'riskreward': 1.5, 'strategy': 'M', 'dim_lot': [1, 1.4, 1, 1.4, 1.9, 2.5, 3.3, 4.4], 'max_open_trades': 8, 'sl': 0.008, 'tp': 0.006, 'delta_sl_tp': 0.002, 'size': 500, 'pair': 'GBP_CHF'}
+{'n_ma': 12, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0006, 'riskreward': 1.5, 'strategy': 'M', 'dim_lot': [1, 1.4, 1, 1.4, 1.9, 2.5, 3.3, 4.4], 'max_open_trades': 8, 'sl': 0.008, 'tp': 0.006, 'delta_sl_tp': 0.002, 'size': 500, 'pair': 'EUR_CHF'}
+{'n_ma': 12, 'n_std': 2.5, 'maxspread': 0.04, 'mingain': 0.06, 'riskreward': 1.5, 'strategy': 'M', 'dim_lot': [1, 1.4, 1, 1.4, 1.9, 2.5, 3.3, 4.4], 'max_open_trades': 8, 'sl': 0.008, 'tp': 0.006, 'delta_sl_tp': 0.002, 'size': 500, 'pair': 'GBP_JPY'}
+{'n_ma': 12, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0006, 'riskreward': 1.5, 'strategy': 'M', 'dim_lot': [1, 1.4, 1, 1.4, 1.9, 2.5, 3.3, 4.4], 'max_open_trades': 8, 'sl': 0, 'tp': 0, 'delta_sl_tp': 0, 'size': 500, 'pair': 'GBP_USD'}
+{'n_ma': 12, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0006, 'riskreward': 1.5, 'strategy': 'M', 'dim_lot': [1, 1.4, 1, 1.4, 1.9, 2.5, 3.3, 4.4], 'max_open_trades': 8, 'sl': 0.008, 'tp': 0.006, 'delta_sl_tp': 0.002, 'size': 500, 'pair': 'EUR_GBP'}
+{'n_ma': 12, 'n_std': 2.5, 'maxspread': 0.0004, 'mingain': 0.0006, 'riskreward': 1.5, 'strategy': 'B', 'dim_lot': [1], 'max_open_trades': 1, 'sl': 0, 'tp': 0, 'delta_sl_tp': 0, 'size': 500, 'pair': 'EUR_USD'}
  
-2023-01-27 05:28:13 Bot started
+2023-02-02 06:34:26 Bot started
